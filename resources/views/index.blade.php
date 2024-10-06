@@ -51,7 +51,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Management
+        Gestion de paquetes:
     </div>
 
     <!-- Nav Item - Paquetes -->
