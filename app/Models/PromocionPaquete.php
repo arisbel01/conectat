@@ -9,6 +9,7 @@ class PromocionPaquete extends Model
 {
     use HasFactory;
 
+
     // Indicar la tabla correspondiente
     protected $table = 'promociones_paquetes';
 
@@ -20,4 +21,13 @@ class PromocionPaquete extends Model
 
     // Definir los campos que pueden ser rellenados
     protected $fillable = ['promocion'];
+
+    protected $table = 'promociones_paquetes';
+
+    // Relación inversa con nombres_paquetes
+    public function nombresPaquetes()
+    {
+        return $this->hasMany(NombresPaquetes::class, 'fk_promocion', 'id_promocion');
+    }
+
 }

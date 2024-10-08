@@ -8,17 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -39,12 +44,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -56,7 +55,7 @@
 
     <!-- Nav Item - Paquetes -->
     <li class="nav-item">
-        <a class="nav-link" href="paquetes.html">
+        <a class="nav-link" href="{{url ('/')}}">
             <i class="fas fa-fw fa-box"></i>
             <span>Gestión de Paquetes</span></a>
     </li>
@@ -129,22 +128,10 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </form>
 
                     <!-- Topbar Navbar -->
@@ -332,7 +319,56 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                   
+                    <!-- Page Heading -->
+                    <div>
+                    <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
+                    <a href="#" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    <span class="text">Nuevo</span>
+                    </a></div>
+                    
+
+
+                    <!-- DataTales Example -->
+                    <section class="page-section" id="portfolio">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
+                                @foreach($paquetes as $paquete)
+                                    <div class="col-md-4">
+                                        <div class="card mb-4 py-3 border-left-danger">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
+                                                <p class="card-text">{{ $paquete->tipo_paquete }}</p>
+                                                <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
+                                                <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
+                                                <p class="card-text">Precio: ${{ $paquete->precio }}</p>
+                                                    
+                                                <a href="#" class="btn btn-info btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text">Editar</span>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Eliminar</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>                                                 
+                    </section>
+
+
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -343,7 +379,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -381,22 +417,23 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Vendor Scripts -->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript -->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages -->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
+    <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+    
 </body>
 
 </html>
