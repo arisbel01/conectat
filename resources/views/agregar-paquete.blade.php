@@ -37,13 +37,18 @@
             <input type="text" name="velocidad_paquete" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="fk_promocion">Promoción</label>
-            <select name="fk_promocion" class="form-control" required>
-                @foreach($promociones as $promocion)
-                    <option value="{{ $promocion->id_promocion }}">{{ $promocion->promocion }}</option>
-                @endforeach
-            </select>
-        </div>
+    <label for="fk_promocion">Promoción</label>
+    <select name="fk_promocion" class="form-control" required>
+        @if (isset($promociones) && $promociones->count() > 0)
+            @foreach($promociones as $promocion)
+                <option value="{{ $promocion->id_promocion }}">{{ $promocion->promocion }}</option>
+            @endforeach
+        @else
+            <option value="">No hay promociones disponibles</option>
+        @endif
+    </select>
+</div>
+
         <button type="submit" class="btn btn-primary">Agregar Paquete</button>
     </form>
 </div>
