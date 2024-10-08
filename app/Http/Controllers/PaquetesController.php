@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NombresPaquetes;  // Modelo de los paquetes
 use Illuminate\Http\Request;
+use App\Models\NombresPaquetes;
 
 class PaquetesController extends Controller
 {
-    public function index() {
-        // Obtener todos los paquetes de la tabla 'nombres_paquetes'
-        $paquetes = NombresPaquetes::all();
+    public function index()
+    {
+        // Traemos los paquetes con sus respectivas promociones
+        $paquetes = NombresPaquetes::with('promocion')->get();
 
-        // Retornar la vista 'index' y pasarle los datos de los paquetes
         return view('index', compact('paquetes'));
     }
 }

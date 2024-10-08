@@ -321,9 +321,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    
 
                     <!-- DataTales Example -->
                     <section class="page-section" id="portfolio">
@@ -331,20 +329,37 @@
                             <div class="row">
                                 <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
                                 @foreach($paquetes as $paquete)
-                                <div class="col-md-4">
-                                    <div class="card mb-4 py-3 border-left-danger">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
-                                            <p class="card-text">{{ $paquete->tipo_paquete }}</p>
-                                            <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
-                                            <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
+                                    <div class="col-md-4">
+                                        <div class="card mb-4 py-3 border-left-danger">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
+                                                <p class="card-text">{{ $paquete->tipo_paquete }}</p>
+                                                <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
+                                                <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
+                                                <p class="card-text">Precio: ${{ $paquete->precio }}</p>
+                                                
+                                                <a href="#" class="btn btn-info btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text">Editar</span>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Eliminar</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
+
                             </div>
                         </div>                                                 
-                     </section>
+                    </section>
+
+
 
                 </div>
                 <!-- /.container-fluid -->
