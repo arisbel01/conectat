@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\NombrePaquete;
 use Illuminate\Http\Request;
-use App\Models\PromocionPaquete;
-
+use App\Models\NombrePaquete;
 
 class PaqueteController extends Controller
 {
     public function create()
     {
-        $promociones = PromocionPaquete::all();
-        return view('agregar-paquete', compact('promociones'));
+        return view('agregar-paquete');
     }
 
     public function store(Request $request)
