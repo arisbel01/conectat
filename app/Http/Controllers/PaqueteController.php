@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\NombrePaquete;
+use App\Models\PromocionPaquete; // Asegúrate de importar el modelo de promociones
 
 class PaqueteController extends Controller
 {
     public function create()
     {
-        return view('agregar-paquete');
+        // Recuperar todas las promociones de la tabla promociones_paquetes
+        $promociones = PromocionPaquete::all();
+
+        // Pasar las promociones a la vista 'agregar-paquete'
+        return view('agregar-paquete', compact('promociones'));
     }
 
     public function store(Request $request)
@@ -26,5 +31,3 @@ class PaqueteController extends Controller
         return redirect('/agregar-paquete')->with('success', 'Paquete agregado exitosamente');
     }
 }
-
-

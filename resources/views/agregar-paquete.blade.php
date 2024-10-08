@@ -25,6 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="POST" action="/agregar-paquete">
+                        @csrf
                             <div class="form-group">
                                 <label for="nombre_paquete">Nombre del Paquete</label>
                                 <input type="text" name="nombre_paquete" class="form-control" required>
@@ -43,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="fk_promocion">Promoción</label>
-                                <select name="fk_promocion" class="form-control" required>
+                                <select name="fk_promocion" class="form-control">
                                     @if (isset($promociones) && $promociones->count() > 0)
                                         @foreach($promociones as $promocion)
                                             <option value="{{ $promocion->id_promocion }}">{{ $promocion->promocion }}</option>
@@ -52,6 +53,7 @@
                                         <option value="">No hay promociones disponibles</option>
                                     @endif
                                 </select>
+
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Agregar Paquete</button>
