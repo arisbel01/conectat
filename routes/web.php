@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaquetesController;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [PaquetesController::class, 'index']);

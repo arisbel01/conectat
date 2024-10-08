@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
@@ -40,12 +44,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -57,7 +55,7 @@
 
     <!-- Nav Item - Paquetes -->
     <li class="nav-item">
-        <a class="nav-link" href="paquetes.html">
+        <a class="nav-link" href="{{url ('/')}}">
             <i class="fas fa-fw fa-box"></i>
             <span>Gestión de Paquetes</span></a>
     </li>
@@ -130,12 +128,11 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -322,7 +319,33 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                   
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
+                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p>
+
+                    <!-- DataTales Example -->
+                    <section class="page-section" id="portfolio">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
+                                @foreach($paquetes as $paquete)
+                                <div class="col-md-4">
+                                    <div class="card mb-4 py-3 border-left-danger">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
+                                            <p class="card-text">{{ $paquete->tipo_paquete }}</p>
+                                            <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
+                                            <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>                                                 
+                     </section>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -333,7 +356,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -387,8 +410,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-
-
+    
 </body>
 
 </html>
