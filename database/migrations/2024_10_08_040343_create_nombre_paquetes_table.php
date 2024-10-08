@@ -9,13 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('nombre_paquetes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    public function up()
+{
+    Schema::create('nombres_paquetes', function (Blueprint $table) {
+        $table->id('id_nombre_paquete');
+        $table->string('nombre_paquete', 50);
+        $table->integer('precio');
+        $table->string('caracteristicas_paquete', 150);
+        $table->string('velocidad_paquete', 30);
+        $table->foreignId('fk_promocion')->constrained('promociones_paquetes', 'id_promocion');
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.
