@@ -8,6 +8,8 @@ Route::get('/', function () {
 
 use App\Http\Controllers\PaqueteController;
 
-Route::get('/agregar-paquete', [PaqueteController::class, 'create']);
-Route::post('/agregar-paquete', [PaqueteController::class, 'store']);
 
+
+
+Route::get('/agregar-paquete', [PaqueteController::class, 'create'])->name('paquetes.create');
+Route::post('/agregar-paquete', [PaqueteController::class, 'store'])->name('paquetes.store');
