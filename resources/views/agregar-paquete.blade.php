@@ -27,7 +27,7 @@
     <h1>Agregar Paquete de Internet</h1>
 
     <form method="POST" action="/agregar-paquete">
-        @csrf
+        
         <div class="form-group">
             <label for="nombre_paquete">Nombre del Paquete</label>
             <input type="text" name="nombre_paquete" class="form-control" required>
