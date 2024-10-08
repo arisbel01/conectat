@@ -320,8 +320,16 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <div>
                     <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
+                    <a href="#" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    <span class="text">Nuevo</span>
+                    </a></div>
                     
+
 
                     <!-- DataTales Example -->
                     <section class="page-section" id="portfolio">
@@ -337,7 +345,7 @@
                                                 <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
                                                 <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
                                                 <p class="card-text">Precio: ${{ $paquete->precio }}</p>
-                                                
+                                                    
                                                 <a href="#" class="btn btn-info btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-edit"></i>
