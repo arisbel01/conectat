@@ -13,3 +13,4 @@ Route::post('/agregar-paquete', [PaqueteController::class, 'store']);
 
 Route::get('/', [PaquetesController::class, 'index']);
 
+Route::get('/recuperar', function () {return view('password');});
