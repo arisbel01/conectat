@@ -30,6 +30,7 @@ class PaqueteController extends Controller
         NombrePaquete::create($validated);
         return redirect('/agregar-paquete')->with('success', 'Paquete agregado exitosamente');
     }
+
     public function edit($id)
     {
         $paquete = NombrePaquete::findOrFail($id);
@@ -53,6 +54,7 @@ class PaqueteController extends Controller
         $paquete->update($validated);
         return redirect()->route('paquete.index')->with('success', 'Paquete actualizado exitosamente');
     }
+
     public function destroy($id)
     {
         $paquete = NombrePaquete::findOrFail($id);
