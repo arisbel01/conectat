@@ -12,6 +12,7 @@ Route::post('/agregar-paquete', [PaqueteController::class, 'store']);
 Route::get('/editar-paquete/{id}', [PaqueteController::class, 'edit'])->name('paquete.edit');
 Route::put('/editar-paquete/{id}', [PaqueteController::class, 'update'])->name('paquete.update');
 
+Route::delete('/paquete/{id}', [PaqueteController::class, 'destroy'])->name('paquete.destroy');
 
 Route::get('/', [PaquetesController::class, 'index'])->name('paquete.index');
 
