@@ -62,6 +62,55 @@
             </div>
         </div>
     </div>
+    <!-- Grid row -->
+    <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Login:</h3>
+                            <!--Body-->
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="text" id="defaultForm-email" class="form-control">
+                                <label for="defaultForm-email">Your email</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input type="password" id="defaultForm-pass" class="form-control">
+                                <label for="defaultForm-pass">Your password</label>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-default waves-effect waves-light">next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 mb-4">
+                    <div class="card indigo form-white">
+                        <div class="card-body">
+                            <h3 class="text-center white-text py-3"><i class="fa fa-user"></i> Login:</h3>
+                            <!--Body-->
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix white-text"></i>
+                                <input type="text" id="defaultForm-email1" class="form-control">
+                                <label for="defaultForm-email1">Your email</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix white-text"></i>
+                                <input type="password" id="defaultForm-pass1" class="form-control">
+                                <label for="defaultForm-pass1">Your password</label>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-outline-white waves-effect waves-light">next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Grid column -->
+            </div>
 </body>
 
 </html>
