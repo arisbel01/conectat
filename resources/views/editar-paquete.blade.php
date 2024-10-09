@@ -2,35 +2,26 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <title>Agregar Paquete de Internet</title>
+    <link href="{{ asset('css/agregar-paq.css') }}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
-    <title>SB Admin 2 - Dashboard</title>
-
-    <!-- Custom fonts for this template-->
-        <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
+    
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-
 </head>
 
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+<body>
+<div id="wrapper">
         <!-- Sidebar -->
          <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
@@ -314,63 +305,52 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div>
-                    <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
-                    <a href="{{ url('/agregar-paquete') }}" class="btn btn-info btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                    <span class="text">Nuevo</span>
-                    </a></div>
-                    
-
-
-                    <!-- DataTales Example -->
-                    <section class="page-section" id="portfolio">
-                        <div class="container">
-                            <div class="row">
-                                <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
-                                @foreach($paquetes as $paquete)
-                                    <div class="col-md-4">
-                                        <div class="card mb-4 py-3 border-left-danger">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
-                                                <p class="card-text">{{ $paquete->tipo_paquete }}</p>
-                                                <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
-                                                <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
-                                                <p class="card-text">Precio: ${{ $paquete->precio }}</p>
-                                                    
-                                                <a href="{{ route('paquete.edit', $paquete->id_nombre_paquete) }}" class="btn btn-info btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                    <span class="text">Editar</span>
-                                                </a>
-                                                <form action="{{ route('paquete.destroy', $paquete->id_nombre_paquete) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paquete?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    
-                                                    <button type="submit" class="btn btn-danger btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Eliminar</span>
-                                                    </button>
-                                                </form>
-
-                                            </div>
+                    <div class="container">
+                        <h1 class="text-center my-4">Agregar Paquete de Internet</h1>
+                        <div class="row">
+                            <!-- Columna del formulario -->
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <form method="POST" action="{{ route('paquete.update', $paquete->id_nombre_paquete) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group">
+                                            <label for="nombre_paquete">Nombre del Paquete</label>
+                                            <input type="text" name="nombre_paquete" class="form-control" value="{{ $paquete->nombre_paquete }}" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="precio">Precio</label>
+                                            <input type="number" name="precio" class="form-control" value="{{ $paquete->precio }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="caracteristicas_paquete">Características</label>
+                                            <input type="text" name="caracteristicas_paquete" class="form-control" value="{{ $paquete->caracteristicas_paquete }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="velocidad_paquete">Velocidad</label>
+                                            <input type="text" name="velocidad_paquete" class="form-control" value="{{ $paquete->velocidad_paquete }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fk_promocion">Promoción</label>
+                                            <select name="fk_promocion" class="form-control">
+                                                @foreach($promociones as $promocion)
+                                                    <option value="{{ $promocion->id_promocion }}" {{ $paquete->fk_promocion == $promocion->id_promocion ? 'selected' : '' }}>
+                                                        {{ $promocion->promocion }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Actualizar Paquete</button>
+                                        </div>
+                                    </form> 
+
                                     </div>
-                                @endforeach
-
+                                </div>
                             </div>
-                        </div>                                                 
-                    </section>
-
-
-
+                        </div>
+                    </div>                   
                 </div>
                 <!-- /.container-fluid -->
 
@@ -417,8 +397,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
+<!-- Bootstrap core JavaScript-->
     <!-- Vendor Scripts -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -435,7 +414,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-    
+
 </body>
 
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,25 +8,13 @@ class PromocionPaquete extends Model
 {
     use HasFactory;
 
-
-    // Indicar la tabla correspondiente
     protected $table = 'promociones_paquetes';
-
-    // Definir la clave primaria si no es 'id'
     protected $primaryKey = 'id_promocion';
-
-    // Si no tienes los campos de timestamps (created_at, updated_at)
     public $timestamps = false;
 
-    // Definir los campos que pueden ser rellenados
-    protected $fillable = ['promocion'];
-
-    protected $table = 'promociones_paquetes';
-
-    // Relación inversa con nombres_paquetes
-    public function nombresPaquetes()
+    // Si la tabla promociones está relacionada con nombres_paquetes
+    public function paquetes()
     {
-        return $this->hasMany(NombresPaquetes::class, 'fk_promocion', 'id_promocion');
+        return $this->hasMany(NombrePaquete::class, 'fk_promocion', 'id_promocion');
     }
-
 }
