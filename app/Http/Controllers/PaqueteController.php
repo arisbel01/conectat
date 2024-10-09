@@ -30,4 +30,37 @@ class PaqueteController extends Controller
         NombrePaquete::create($validated);
         return redirect('/agregar-paquete')->with('success', 'Paquete agregado exitosamente');
     }
+    public function edit($id)
+    {
+        $paquete = NombrePaquete::findOrFail($id);
+        $promociones = PromocionPaquete::all(); // Obtener todas las promociones
+
+        return view('editar-paquete', compact('paquete', 'promociones'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $paquete = NombrePaquete::findOrFail($id);
+
+        $validated = $request->validate([
+            'nombre_paquete' => 'required|max:50',
+            'precio' => 'required|integer',
+            'caracteristicas_paquete' => 'required|max:150',
+            'velocidad_paquete' => 'required|max:30',
+            'fk_promocion' => 'required|exists:promociones_paquetes,id_promocion'
+        ]);
+
+        $paquete->update($validated);
+        return redirect()->route('paquete.index')->with('success', 'Paquete actualizado exitosamente');
+    }
+    public function destroy($id)
+    {
+        $paquete = NombrePaquete::findOrFail($id);
+        $paquete->delete();
+
+        return redirect()->route('paquete.index')->with('success', 'Paquete eliminado exitosamente');
+    }
+
+
+
 }
