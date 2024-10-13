@@ -15,7 +15,7 @@
         
     <header class="header-realista">
         <div class="logo">
-            <img src="img/logo1.png" alt="Logo" class="logo-img">
+            <img src="{{ asset('images/icon.png') }}" alt="Logo" class="logo-img">
         </div>
         <nav>
             <ul>
