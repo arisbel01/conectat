@@ -18,3 +18,6 @@ Route::get('/', [PaquetesController::class, 'index'])->name('paquete.index');
 Route::get('/recuperar', function () {return view('password');});
 
 Route::get('/registro', function () {return view('registro');});
+Route::get('/login', function () {return view('login');});
+Route::get('/datos', function () {return view('datos');});
+Route::get('/user', function () {return view('user');});

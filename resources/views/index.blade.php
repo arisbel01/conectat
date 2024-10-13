@@ -348,7 +348,7 @@
                                                     </span>
                                                     <span class="text">Editar</span>
                                                 </a>
-
+                                                <p></p>
                                                 <form action="{{ route('paquete.destroy', $paquete->id_nombre_paquete) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paquete?');">
                                                     @csrf
                                                     @method('DELETE')
