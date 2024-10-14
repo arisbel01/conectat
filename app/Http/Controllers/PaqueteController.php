@@ -38,6 +38,7 @@ class PaqueteController extends Controller
 
         return view('editar-paquete', compact('paquete', 'promociones'));
     }
+
     public function update(Request $request, $id)
     {
         $paquete = NombrePaquete::findOrFail($id);
