@@ -46,7 +46,7 @@
                             </div>
                             <!-- Aquí puedes agregar más características si existen -->
                         </div>
-                        <button class="button">Choose Plan</button>
+                        <a class="button"href="{{url ('/datos')}}" >Choose Plan</a>
                     </div>
                 @endforeach
 
