@@ -19,3 +19,8 @@ Route::get('/', [PaquetesController::class, 'index'])->name('paquete.index');
 Route::get('/recuperar', function () {return view('password');});
 
 Route::get('/registro', function () {return view('registro');});
+
+
+Route::get('/precontrato', [PreContratoController::class, 'mostrarFormulario'])->name('mostrarFormulario');
+Route::post('/precontrato/enviar-codigo', [PreContratoController::class, 'enviarCodigo'])->name('enviarCodigo');
+Route::post('/precontrato/verificar-codigo', [PreContratoController::class, 'verificarCodigo'])->name('verificarCodigo');
