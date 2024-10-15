@@ -39,7 +39,7 @@ class PreContratoController extends Controller
 
     public function mostrarVerificacion()
     {
-        return view('precontrato.verificar');
+        return view('verificar-Codigo');
     }
 
     public function verificarCodigo(Request $request)

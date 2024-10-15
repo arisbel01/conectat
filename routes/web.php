@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaquetesController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\PaqueteController;
+use App\Http\Controllers\PreContratoController;
 
 Route::get('/agregar-paquete', [PaqueteController::class, 'create']);
 Route::post('/agregar-paquete', [PaqueteController::class, 'store']);
@@ -23,7 +24,8 @@ Route::get('/registro', function () {return view('registro');});
 
 Route::get('/precontrato', [PreContratoController::class, 'mostrarFormulario'])->name('mostrarFormulario');
 Route::post('/precontrato/enviar-codigo', [PreContratoController::class, 'enviarCodigo'])->name('enviarCodigo');
-Route::post('/precontrato/verificar-codigo', [PreContratoController::class, 'verificarCodigo'])->name('verificarCodigo');
+Route::get('/precontrato/verificar-Codigo', [PreContratoController::class, 'mostrarVerificacion'])->name('verificarCodigo'); // Ruta GET para mostrar el formulario de verificación
+Route::post('/precontrato/verificar-Codigo', [PreContratoController::class, 'verificarCodigo'])->name('verificarCodigo'); // Ruta POST para procesar la verificación
 
 Route::get('/login', function () {return view('login');});
 Route::get('/datos', function () {return view('datos');});
