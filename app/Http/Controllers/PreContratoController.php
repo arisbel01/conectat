@@ -19,8 +19,7 @@ class PreContratoController extends Controller
     {
         $validatedData = $request->validate([
             'codigoPostal' => 'required|numeric',
-            'calle' => 'required|string',
-            'noExterior' => 'required|numeric',
+                     
             'correo' => 'required|email',
             // Validar el resto de los campos
         ]);
