@@ -46,7 +46,8 @@
                             </div>
                             <!-- Aquí puedes agregar más características si existen -->
                         </div>
-                        <a class="button"href="{{url ('/datos')}}" >Choose Plan</a>
+                        <a class="button" href="{{ route('seleccionarPaquete', ['id_nombre_paquete' => $paquete->id_nombre_paquete]) }}">Contratar</a>
+
                     </div>
                 @endforeach
 

@@ -65,9 +65,15 @@
                     <label for="alcaldia" class="form-label">Telefono</label>
                     <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                 </div>
+                
+
             </div>
 
-           
+            @if(session()->has('id_nombre_paquete'))
+                <input type="hidden" name="id_nombre_paquete" value="{{ session('id_nombre_paquete') }}">
+            @else
+                <p>No se ha seleccionado un paquete. Por favor, selecciona uno.</p>
+            @endif
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button type="submit" class="btn btn-primary">Continuar</button>

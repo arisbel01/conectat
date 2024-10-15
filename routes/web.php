@@ -26,6 +26,8 @@ Route::get('/precontrato', [PreContratoController::class, 'mostrarFormulario'])-
 Route::post('/precontrato/enviar-codigo', [PreContratoController::class, 'enviarCodigo'])->name('enviarCodigo');
 Route::get('/precontrato/verificar-Codigo', [PreContratoController::class, 'mostrarVerificacion'])->name('verificarCodigo'); // Ruta GET para mostrar el formulario de verificación
 Route::post('/precontrato/verificar-Codigo', [PreContratoController::class, 'verificarCodigo'])->name('verificarCodigo'); // Ruta POST para procesar la verificación
+Route::get('/seleccionar-paquete/{id_nombre_paquete}', [PreContratoController::class, 'seleccionarPaquete'])->name('seleccionarPaquete');
+
 
 Route::get('/login', function () {return view('login');});
 Route::get('/datos', function () {return view('datos');});
