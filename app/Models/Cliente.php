@@ -9,7 +9,7 @@ class Cliente extends Model
     protected $table = 'clientes';
 
     protected $fillable = [
-        'nombre_completo', 'cp', 'municipio', 'direccion', 'colonia', 'referencias adicionales', 'correo', 'telefono', 
+        'nombre_completo', 'cp', 'municipio', 'direccion', 'correo', 'telefono', 
         // Incluir todos los campos del formulario
     ];
 }

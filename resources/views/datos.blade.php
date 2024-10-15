@@ -37,11 +37,11 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="codigoPostal" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" placeholder="Nombre completo" required>
+                    <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Nombre completo" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="calle" class="form-label">Codigo Postal</label>
-                    <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" placeholder="Codigo Postal" required>
+                    <input type="text" class="form-control" id="cp" name="cp" placeholder="Codigo Postal" required>
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="noInterior" class="form-label">Direccion</label>
-                    <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Direccion">
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion">
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="alcaldia" class="form-label">Telefono</label>
-                    <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Telefono" required>
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                 </div>
             </div>
 

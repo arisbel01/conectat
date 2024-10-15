@@ -18,9 +18,12 @@ class PreContratoController extends Controller
     public function enviarCodigo(Request $request)
     {
         $validatedData = $request->validate([
-            'codigoPostal' => 'required|numeric',
-                     
+            'nombre_completo' => 'required|string|max:255',
+            'cp' => 'required|string',
+            'municipio' => 'required|string|max:255',
+            'direccion' => 'nullable|string|max:255', // Si es opcional
             'correo' => 'required|email',
+            'telefono' => 'required|string|max:20',
             // Validar el resto de los campos
         ]);
 
