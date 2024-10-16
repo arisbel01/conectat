@@ -28,27 +28,30 @@
         </header>
 
        
-        <section>
-        <div class="card">
-                <div class="new-tag">HOT</div>
-                <div class="megabytes">20<span>GB</span></div>
-                <div class="price">$25<span>/month</span></div>
-                <div class="includes">
-                    <p>Includes:</p>
-                    <div class="item">
-                        <img src="images/icon.png" alt="icon">
-                        <div class="item-title">Unlimited Calls</div>
+        <section>        
+            <div class="section">
+                <div class="container">
+                @foreach ($paquetes as $paquete)
+                    <div class="card">
+                        @if ($paquete->promocion)
+                            <div class="new-tag">HOT</div>
+                        @endif
+                        <div class="megabytes">{{ $paquete->velocidad_paquete }}<span></span></div>
+                        <div class="price">${{ $paquete->precio }}<span>/month</span></div>
+                        <div class="includes">
+                            <p>Includes:</p>
+                            <div class="item">
+                                <img src="images/icon.png" alt="icon">
+                                <div class="item-title">{{ $paquete->caracteristicas_paquete }}</div>
+                            </div>
+                            <!-- Aquí puedes agregar más características si existen -->
+                        </div>
+                        <a class="button" href="{{ route('seleccionarPaquete', ['id_nombre_paquete' => $paquete->id_nombre_paquete]) }}">Contratar</a>
+
                     </div>
-                    <div class="item">
-                        <img src="images/icon.png" alt="icon">
-                        <div class="item-title">Unlimited Texts</div>
-                    </div>
-                    <div class="item">
-                        <img src="images/icon.png" alt="icon">
-                        <div class="item-title">Free Roaming</div>
-                    </div>
+                @endforeach
+
                 </div>
-                <button class="button">Choose Plan</button>
             </div>
         </section>
        

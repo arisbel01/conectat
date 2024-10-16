@@ -14,4 +14,6 @@ class PaquetesController extends Controller
 
         return view('index', compact('paquetes'));
     }
+
+   
 }
