@@ -26,8 +26,16 @@ class PreContratoController extends Controller
             'direccion' => 'nullable|string|max:255',
             'correo' => 'required|email',
             'telefono' => 'required|string|max:20',
+            'referencia_domicilio' => 'required|string|max:255',
         ]);
 
+         // Verificar si el correo ya está registrado
+        $clienteExistente = Cliente::where('correo', $request->correo)->first();
+        if ($clienteExistente) {
+            // Si el correo ya está registrado, devolver un error
+            return back()->withErrors(['correo' => 'Este correo ya está registrado.'])->withInput();
+        }
+    
         // Aqui se verifica si el id del paquete se cargó correctamente
         if (session()->has('id_nombre_paquete')) {
             // Añadir el id_nombre_paquete a los datos validados
@@ -51,6 +59,16 @@ class PreContratoController extends Controller
     {
         return view('verificar-Codigo');
     }
+
+   // public function mostrarVerificacion()
+    //{
+        // Recuperar el código de verificación de la sesión
+      //  $codigoVerificacion = session('codigo_verificacion');
+
+     // Pasar el código a la vista
+     //return view('verificar-Codigo', ['codigo' => $codigoVerificacion]);
+    //}
+
 
     public function verificarCodigo(Request $request)
     {
@@ -93,5 +111,4 @@ class PreContratoController extends Controller
         return redirect()->route('mostrarFormulario');
     }
     
-
 }
