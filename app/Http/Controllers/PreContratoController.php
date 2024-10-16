@@ -28,7 +28,7 @@ class PreContratoController extends Controller
             'telefono' => 'required|string|max:20',
         ]);
 
-        // Asegurarse de que el paquete esté en la sesión
+        // Aqui se verifica si el id del paquete se cargó correctamente
         if (session()->has('id_nombre_paquete')) {
             // Añadir el id_nombre_paquete a los datos validados
             $validatedData['fk_paquete'] = session('id_nombre_paquete');
