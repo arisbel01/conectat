@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Conectat-Verificacion  </title>
         <link href="{{ asset('css/datos.css') }}" rel="stylesheet">
         <!-- Font Awesome icons (free version)-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -15,12 +15,12 @@
         
     <header class="header-realista">
         <div class="logo">
-            <img src="{{ asset('images/icon.png') }}" alt="Logo" class="logo-img">
+            <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
         </div>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#planes">Planes de Internet</a></li>
+                <li><a href="{{ url('/user') }}">Inicio</a></li>
+                <li><a href="{{ url('/user') }}">Planes de Internet</a></li>
                 <li><a href="#contacto">Contacto</a></li>
                 <li><a href="#soporte">Soporte</a></li>
             </ul>
@@ -46,11 +46,6 @@
         </form>
     </section>
 
-       
-       
-      
-    
-      
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
