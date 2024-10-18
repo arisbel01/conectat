@@ -28,13 +28,14 @@
         </header>
 
        
-        <section>        
+        <section>
+            <div class="diseñopaquetes">        
             <div class="section">
                 <div class="container">
                 @foreach ($paquetes as $paquete)
                     <div class="card">
                         @if ($paquete->promocion)
-                            <div class="new-tag">HOT</div>
+                            <div class="new-tag">{{$paquete -> nombre_paquete}}</div>
                         @endif
                         <div class="megabytes">{{ $paquete->velocidad_paquete }}<span></span></div>
                         <div class="price">${{ $paquete->precio }}<span>/month</span></div>
@@ -53,7 +54,28 @@
 
                 </div>
             </div>
+            </div>
         </section>
+        {{-- ***********************************************************************************footer --}}
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                <div class="support">
+                    <p>Soporte: <a href="tel:+1234567890">+1 234 567 890</a></p>
+                </div>
+                <div class="social-media">
+                    <a href="#" class="social-icon">Facebook</a>
+                    <a href="#" class="social-icon">Twitter</a>
+                    <a href="#" class="social-icon">Instagram</a>
+                </div>
+            </div>
+        </footer>
+          
        
       
     

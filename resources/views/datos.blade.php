@@ -99,7 +99,28 @@
                     Este correo ya está registrado.
                 </div>
         </form>
-    </section>      
+    </section>
+    
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
+            <ul class="footer-links">
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos de Servicio</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <div class="support">
+                <p>Soporte: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+            <div class="social-media">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+            </div>
+        </div>
+    </footer>
+    
+  
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
