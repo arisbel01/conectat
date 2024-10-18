@@ -27,7 +27,6 @@
             </nav>
         </header>
 
-       
         <section>        
             <div class="section">
                 <div class="container">
