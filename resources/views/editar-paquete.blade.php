@@ -53,7 +53,7 @@
 
     <!-- Nav Item - Clientes -->
     <li class="nav-item">
-        <a class="nav-link" href="clientes.html">
+        <a class="nav-link" href="{{ url('/clienteRegistrados') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Clientes</span></a>
     </li>
@@ -396,6 +396,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 <!-- Bootstrap core JavaScript-->
     <!-- Vendor Scripts -->

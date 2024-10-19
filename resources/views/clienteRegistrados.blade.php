@@ -13,7 +13,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Lista de Clientes</title>
 
     <!-- Custom fonts for this template-->
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -26,13 +26,10 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<body>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -62,7 +59,7 @@
 
     <!-- Nav Item - Clientes -->
     <li class="nav-item">
-        <a class="nav-link" href="clienteRegistrados">
+        <a class="nav-link" href="{{url('clienteRegistrados')}}">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Clientes</span></a>
     </li>
@@ -311,73 +308,58 @@
 
                 </nav>
                 <!-- End of Topbar -->
+        <div class="container mt-5">
+            <h2 class="text-center">Lista de Clientes</h2>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                       <!-- <th>ID</th> -->
+                        <th>Nombre Completo</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Código Postal</th>
+                        <th>Municipio</th>
+                        <th>Dirección</th>
+                        <th>Referencia de Domicilio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($clientes->isEmpty())
+                        <tr>
+                            <td colspan="8" class="text-center">No hay clientes registrados.</td>
+                        </tr>
+                    @else
+                    @foreach($clientes as $cliente)
+                    <tr>
+                        <!--<th>{{ $cliente->id_cliente }}</th>-->
+                        <td>{{ $cliente->nombre_completo }}</td>
+                        <td>{{ $cliente->correo }}</td>
+                        <td>{{ $cliente->telefono }}</td>
+                        <td>{{ $cliente->cp }}</td>
+                        <td>{{ $cliente->municipio }}</td>
+                        <td>{{ $cliente->direccion ?? 'N/A' }}</td>
+                        <td>{{ $cliente->referencia_domicilio }}</td>
+                        <td>
+                        <a href="{{ route('cliente.edit', $cliente->id_cliente) }}" class="btn btn-warning btn-sm">Actualizar</a>
 
-                    <!-- Page Heading -->
-                    <div>
-                    <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
-                    <a href="{{ url('/agregar-paquete') }}" class="btn btn-info btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                    <span class="text">Nuevo</span>
-                    </a></div>
-                    
+                                <!-- Aquí se incluye el ID en la URL 
+                            <a href="editarCliente" class="btn btn-warning btn-sm">Actualizar</a>-->
+                        <form action="{{ route('cliente.destroy', $cliente->id_cliente) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?');">Eliminar</button>
+                        </form>
 
+                        </td>
+                    </tr>
+                    @endforeach
 
-                    <!-- DataTales Example -->
-                    <section class="page-section" id="portfolio">
-                        <div class="container">
-                            <div class="row">
-                                <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
-                                @foreach($paquetes as $paquete)
-                                    <div class="col-md-4">
-                                        <div class="card mb-4 py-3 border-left-danger">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
-                                                <p class="card-text">{{ $paquete->tipo_paquete }}</p>
-                                                <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
-                                                <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
-                                                <p class="card-text">Precio: ${{ $paquete->precio }}</p>
-                                                    
-                                                <a href="{{ route('paquete.edit', $paquete->id_nombre_paquete) }}" class="btn btn-info btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                    <span class="text">Editar</span>
-                                                </a>
-                                                <p></p>
-                                                <form action="{{ route('paquete.destroy', $paquete->id_nombre_paquete) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paquete?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    
-                                                    <button type="submit" class="btn btn-danger btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Eliminar</span>
-                                                    </button>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
-                        </div>                                                 
-                    </section>
-
-
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
+                    @endif
+                </tbody>
+            </table>
+        </div>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -387,36 +369,6 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -436,7 +388,6 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-    
-</body>
 
+</body>
 </html>

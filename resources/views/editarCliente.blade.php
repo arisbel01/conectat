@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -13,7 +12,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Editar de Clientes</title>
 
     <!-- Custom fonts for this template-->
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -26,13 +25,10 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<body>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -62,7 +58,7 @@
 
     <!-- Nav Item - Clientes -->
     <li class="nav-item">
-        <a class="nav-link" href="clienteRegistrados">
+        <a class="nav-link" href="{{ url('/clienteRegistrados') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Clientes</span></a>
     </li>
@@ -311,73 +307,56 @@
 
                 </nav>
                 <!-- End of Topbar -->
+    <div class="container mt-5">
+        <h2>Editar Cliente</h2>
+        <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div>
-                    <h1 class="h3 mb-2 text-gray-800">Paquetes existentes</h1>
-                    <a href="{{ url('/agregar-paquete') }}" class="btn btn-info btn-icon-split">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                    <span class="text">Nuevo</span>
-                    </a></div>
-                    
-
-
-                    <!-- DataTales Example -->
-                    <section class="page-section" id="portfolio">
-                        <div class="container">
-                            <div class="row">
-                                <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
-                                @foreach($paquetes as $paquete)
-                                    <div class="col-md-4">
-                                        <div class="card mb-4 py-3 border-left-danger">
-                                            <div class="card-body">
-                                                <h5 class="card-title">{{ $paquete->nombre_paquete }}</h5>
-                                                <p class="card-text">{{ $paquete->tipo_paquete }}</p>
-                                                <p class="card-text">Velocidad: {{ $paquete->velocidad_paquete }}</p>
-                                                <p class="card-text">Características: {{ $paquete->caracteristicas_paquete }}</p>
-                                                <p class="card-text">Precio: ${{ $paquete->precio }}</p>
-                                                    
-                                                <a href="{{ route('paquete.edit', $paquete->id_nombre_paquete) }}" class="btn btn-info btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                    <span class="text">Editar</span>
-                                                </a>
-                                                <p></p>
-                                                <form action="{{ route('paquete.destroy', $paquete->id_nombre_paquete) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paquete?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    
-                                                    <button type="submit" class="btn btn-danger btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Eliminar</span>
-                                                    </button>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
-                        </div>                                                 
-                    </section>
-
-
-
-                </div>
-                <!-- /.container-fluid -->
-
+            <div class="mb-3">
+                <label for="nombre_completo" class="form-label">Nombre Completo</label>
+                <input type="text" class="form-control" name="nombre_completo" value="{{ $cliente->nombre_completo }}" required>
             </div>
-            <!-- End of Main Content -->
 
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
+                <input type="email" class="form-control" name="correo" value="{{ $cliente->correo }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" name="telefono" value="{{ $cliente->telefono }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="cp" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" name="cp" value="{{ $cliente->cp }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="municipio" class="form-label">Municipio</label>
+                <input type="text" class="form-control" name="municipio" value="{{ $cliente->municipio }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" name="direccion" value="{{ $cliente->direccion }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="referencia_domicilio" class="form-label">Referencia de Domicilio</label>
+                <input type="text" class="form-control" name="referencia_domicilio" value="{{ $cliente->referencia_domicilio }}" required>
+            </div>
+
+            <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <!-- Campos del formulario -->
+                <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
+            </form>
+
+            <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -387,13 +366,8 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -417,6 +391,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -436,7 +411,5 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-    
 </body>
-
 </html>

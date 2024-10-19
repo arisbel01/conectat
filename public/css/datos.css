@@ -1,4 +1,7 @@
 /* Estilo realista para el header */
+.body{
+    background-color: #333;
+}
 .header-realista {
     background: linear-gradient(to right, #003366, #005b99); /* Azules oscuros para un tono serio y profesional */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
