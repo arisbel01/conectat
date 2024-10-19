@@ -9,7 +9,7 @@
         <link href="{{ asset('css/pre-contrato.css') }}" rel="stylesheet">
         <!-- Font Awesome icons (free version)-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        
+
     </head>
     <body id="page-top">
         
@@ -17,16 +17,25 @@
         <div class="logo">
             <img src="{{ asset('images/logonuevo.png') }}" alt="Logo" class="logo-img">
         </div>
+        <!-- Estructura de la ventana modal -->
+        <div class="modal-background" id="customModal">
+            <div class="modal-content">
+                <h3>Confirmación</h3>
+                <p>¿Deseas regresar a la página de Planes de Internet? Se perderán todos los datos ingresados.</p>
+                <button class="modal-button" id="confirmBtn">Aceptar</button>
+                <button class="modal-button modal-cancel" id="cancelBtn">Cancelar</button>
+            </div>
+        </div>
+
         <nav>
             <ul class="nav-links">
-                <li><a href="{{url('/user')}}">Inicio</a></li>
-                <li><a href="{{url('/user')}}">Planes de Internet</a></li>
+                 <li><a href="{{url('/user')}}">Inicio</a></li>
+                 <li><a href="{{url('/user')}}">Planes de Internet</a></li>
                 <li><a href="#contacto">Contacto</a></li>
                 <li><a href="#soporte">Soporte</a></li>
             </ul>
         </nav>
     </header>
-
        
     <section class="container-mt-5">
         <h2 class="text-center">Datos de Pre-contrato</h2>
@@ -120,10 +129,13 @@
         </div>
     </footer>
     
+  
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+       
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+    </body>
 </html>
