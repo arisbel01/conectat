@@ -6,8 +6,13 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
 
+
         <title>Catalogo-Paquetes</title>
         <link href="{{ asset('css/datos.css') }}" rel="stylesheet">
+
+        <title>Agency - Start Bootstrap Theme</title>
+        <link href="{{ asset('css/user.css') }}" rel="stylesheet">
+
 
         <title>Agency - Start Bootstrap Theme</title>
         <link href="{{ asset('css/user.css') }}" rel="stylesheet">
@@ -21,12 +26,14 @@
         <header class="navbar">
             <div class="logo">
 
+
                 <img src="{{asset('images/logo1.png')}}" alt="Logo" class="logo-img">
             </div>
             <nav>
                 <ul>
                     <li><a href="user">Inicio</a></li>
                     <li><a href="user">Planes de Internet</a></li>
+
 
                 <img src="{{ asset('images/logonuevo.png') }}" alt="Logo" class="logo-img">
             </div>
@@ -42,7 +49,13 @@
         </header>
 
 
+
         <section>        
+
+       
+        <section>
+            <div class="diseñopaquetes">        
+
 
        
         <section>
