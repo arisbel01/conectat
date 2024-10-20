@@ -18,14 +18,7 @@
             <div class="logo">
                 <img src="{{ asset('images/logonuevo.png') }}" alt="Logo" class="logo-img">
             </div>
-            <div class="modal-background" id="customModal">
-            <div class="modal-content">
-                <h3>Confirmación</h3>
-                <p>¿Deseas regresar a la página de Planes de Internet? Se perderán todos los datos ingresados.</p>
-                <button class="modal-button" id="confirmBtn">Aceptar</button>
-                <button class="modal-button modal-cancel" id="cancelBtn">Cancelar</button>
-            </div>
-        </div>
+           
             <nav>
                 <ul class="nav-links">
                     <li><a href="#inicio">Inicio</a></li>
