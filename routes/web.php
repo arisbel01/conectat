@@ -8,6 +8,7 @@ use App\Http\Controllers\PreContratoController;
 use App\Http\Controllers\mostrarClientesController;
 use App\Http\Controllers\editarClienteController;
 
+
 Route::get('/agregar-paquete', [PaqueteController::class, 'create']);
 Route::post('/agregar-paquete', [PaqueteController::class, 'store']);
 Route::get('/editar-paquete/{id}', [PaqueteController::class, 'edit'])->name('paquete.edit');
@@ -39,12 +40,6 @@ Route::get('/datos', function () {return view('datos');});
 Route::get('/clienteRegistrados', [mostrarClientesController::class, 'mostrarClientes'])->name('clientes');
 //Route::get('/cliente/{id}', [mostrarClientesController::class, 'editarCliente'])->name('cliente.edit');
 Route::delete('/cliente/{id}', [mostrarClientesController::class, 'destroy'])->name('cliente.destroy');
-
-
-// Ruta para mostrar el formulario de edición de cliente
-//Route::get('/cliente/{id}', [editarClienteController::class, 'editarCliente'])->name('cliente.edit');
-
-// Ruta para actualizar los datos del cliente
 
 //Route::get('/editarCliente', [editarClienteController::class, 'editarClientes'])->name('clientes');
 Route::get('/clienteRegistrados/{id}', [editarClienteController::class, 'editarCliente'])->name('cliente.edit');
