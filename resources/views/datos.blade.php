@@ -5,8 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+<<<<<<< HEAD
         <title>Agency - Start Bootstrap Theme</title>
         <link href="{{ asset('css/pre-contrato.css') }}" rel="stylesheet">
+=======
+
+        <title>Pre-Contrato</title>
+        <link href="{{ asset('css/datos.css') }}" rel="stylesheet">
+
+        <title>Agency - Start Bootstrap Theme</title>
+        <link href="{{ asset('css/pre-contrato.css') }}" rel="stylesheet">
+
+>>>>>>> origin/jBranch
         <!-- Font Awesome icons (free version)-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -15,6 +25,7 @@
         
     <header class="navbar">
         <div class="logo">
+<<<<<<< HEAD
             <img src="{{ asset('images/logonuevo.png') }}" alt="Logo" class="logo-img">
         </div>
 
@@ -22,10 +33,28 @@
             <ul class="nav-links">
                  <li><a href="{{url('/user')}}">Inicio</a></li>
                  <li><a href="{{url('/user')}}">Planes de Internet</a></li>
+=======
+
+            <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
+        </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{{ url('/user') }}" onclick="verificarDatos(event)">Inicio</a></li>
+                    <li><a href="{{ url('/user') }}" onclick="verificarDatos(event)">Planes de Internet</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        {{-- <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#planes">Planes de Internet</a></li>
+
+>>>>>>> origin/jBranch
                 <li><a href="#contacto">Contacto</a></li>
                 <li><a href="#soporte">Soporte</a></li>
             </ul>
-        </nav>
+        </nav> --}}
     </header>
        
     <section class="container-mt-5">
@@ -125,8 +154,83 @@
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<<<<<<< HEAD
        
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
     </body>
+=======
+
+        <script>function verificarDatos(event) {
+            event.preventDefault(); // Prevenir la acción por defecto del enlace
+        
+            // Obtener los valores de los campos del formulario
+            var nombre = document.getElementById('nombre_completo').value;
+            var cp = document.getElementById('cp').value;
+            var municipio = document.getElementById('municipio').value;
+            var correo = document.getElementById('correo').value;
+            var telefono = document.getElementById('telefono').value;
+            var ciudad = document.getElementById('ciudad').value;
+            var referencia = document.getElementById('referencia_domicilio').value;
+        
+            // Contador para campos llenos
+            var camposLlenos = 0;
+        
+            // Verificar si cada campo está lleno y contar
+            if (nombre) camposLlenos++;
+            if (cp) camposLlenos++;
+            if (municipio) camposLlenos++;
+            if (correo) camposLlenos++;
+            if (telefono) camposLlenos++;
+            if (ciudad) camposLlenos++;
+            if (referencia) camposLlenos++;
+        
+            var mensajeModal = document.getElementById('mensajeModal');
+            var modal = document.getElementById('miModal');
+        
+            // Si todos los campos están llenos
+            if (camposLlenos === 7) {
+                mensajeModal.innerText = '¿Estas seguro de cambiar a la página de paquetes? se perderá todo los datos ingresados ';
+                modal.style.display = "block";
+            }
+            // Si se ingresaron algunos, pero no todos
+            else if (camposLlenos > 0) {
+                mensajeModal.innerText = '¿Estas seguro de cambiar a la página de paquetes? se perderá todo los datos ingresados ';
+                modal.style.display = "block";
+            }
+            // Si no se ingresó ningún dato
+            else {
+                // Redirigir al usuario al índice principal si no hay datos ingresados
+                window.location.href = "{{ url('/user') }}"; 
+            }
+            // Cerrar el modal cuando se hace clic en el botón de cerrar
+            document.getElementById('aceptarBtn').onclick = function() {
+                modal.style.display = "none";
+                 window.location.href = "{{ url('/user') }}";
+            }
+            document.getElementById('cancelarBtn').onclick = function() {
+            var modal = document.getElementById('miModal');
+            modal.style.display = "none"; // Solo cierra el modal
+            }
+        }
+        </script>
+        <div id="miModal" class="modal">
+            <div class="modal-content">
+                <img id="icono" src="{{ asset('images/falla.png') }}" alt="Icono">
+                <p id="mensajeModal"></p>
+                <div class="buttonnn">
+                    <button id="aceptarBtn" class="aceptar-btn">Aceptar</button>
+                    <button id="cancelarBtn" class="cancelar-btn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        {{-- ACA TERMINA LA FUNCION DE VENTANA EMERGENTE -----------------------------------------------------------------}}
+        
+        
+        
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+    </body>
+
+>>>>>>> origin/jBranch
 </html>
