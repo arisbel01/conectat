@@ -25,16 +25,13 @@
         
         <header class="navbar">
             <div class="logo">
-
-
                 <img src="{{asset('images/logo1.png')}}" alt="Logo" class="logo-img">
             </div>
            
             <nav>
                 <ul class="nav-links">
                 <li><a href="user">Inicio</a></li>
-                    <li><a href="user">Planes de Internet</a></li>
-
+                    <li><a href="user"  >Planes de Internet</a></li>
 
                     <li><a href="#contacto">Contacto</a></li>
                     <li><a href="#soporte">Soporte</a></li>
