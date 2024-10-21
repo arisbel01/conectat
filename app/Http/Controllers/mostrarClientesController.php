@@ -41,7 +41,9 @@ class mostrarClientesController extends Controller
             'correo' => 'required|email',
             'telefono' => 'required|string|max:20',
             'referencia_domicilio' => 'required|string|max:255',
+            'fk_paquete' => 'required|exists:nombres_paquetes,id_nombre_paquete', // Validar la clave foránea
         ]);
+        
 
      // Actualizar el cliente
 

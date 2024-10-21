@@ -23,6 +23,18 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <script>
+        $(document).ready(function() {
+            // Bloquear todos los campos al cargar la página
+            $('input').prop('disabled', true);
+
+            // Habilitar los campos al hacer clic en el botón
+            $('#editButton').click(function() {
+                $('input').prop('disabled', false); // Habilita los campos
+                $(this).hide(); // Oculta el botón después de habilitar los campos
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -350,9 +362,13 @@
             <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <!-- Campos del formulario -->
-                <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
+                
+                <br>
             </form>
+            
+            <br>
+            <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
+                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
 
             <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
         </form>
