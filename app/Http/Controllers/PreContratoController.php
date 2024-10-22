@@ -8,6 +8,7 @@ use App\Models\Cliente;
 use App\Mail\VerificacionCodigo;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; // Agrega esta línea
+use App\Mail\miPrecontrato;
 
 class PreContratoController extends Controller
 {
@@ -70,35 +71,75 @@ class PreContratoController extends Controller
     //}
 
 
+    // public function verificarCodigo(Request $request)
+    // {
+    //     $request->validate([
+    //         'codigo' => 'required',
+    //     ]);
+
+    //     if ($request->codigo === session('codigo_verificacion')) {
+    //         DB::enableQueryLog();
+
+    //         // Crear un nuevo cliente en la base de datos
+    //         Cliente::create(session('datos_cliente'));
+        
+    //          // Obtener el registro de consultas
+    //         $queryLog = DB::getQueryLog();
+
+    //         // Mostrar la primera consulta (si es la única)
+    //         dd($queryLog[0]);
+
+    //         // Limpiar sesión
+    //         session()->forget(['codigo_verificacion', 'datos_cliente']);
+    //         // Limpiar sesión
+    //         session()->forget(['codigo_verificacion', 'datos_cliente']);
+        
+    //         return redirect()->route('precontratoExitoso');
+    //     } else {
+    //         return back()->withErrors(['codigo' => 'El código ingresado es incorrecto.']);
+    //     }
+    // }
     public function verificarCodigo(Request $request)
     {
         $request->validate([
             'codigo' => 'required',
         ]);
-
+    
         if ($request->codigo === session('codigo_verificacion')) {
             DB::enableQueryLog();
-
+    
             // Crear un nuevo cliente en la base de datos
             Cliente::create(session('datos_cliente'));
-        
-             // Obtener el registro de consultas
-            $queryLog = DB::getQueryLog();
+    
+            // Obtener el nombre del paquete a partir del fk_paquete almacenado en la sesión
+            $idPaquete = session('datos_cliente')['fk_paquete'];
+            $nombre_paquete = DB::table('nombres_paquetes')->where('id_nombre_paquete', $idPaquete)->value('nombre_paquete'); // Suponiendo que la tabla es 'paquetes'
 
+            // Enviar correo después de crear el cliente
+            $nombre_usuario = session('datos_cliente')['nombre_completo']; // Obtén el nombre del cliente
+            $correo_usuario = session('datos_cliente')['correo']; // Obtén el correo del cliente
+            $municipio = session('datos_cliente')['municipio']; // Obtén el nombre del cliente
+            $direccion = session('datos_cliente')['direccion']; // Obtén el correo del cliente
+            $telefono = session('datos_cliente')['telefono']; // Obtén el nombre del cliente
+            $referencia_domicilio = session('datos_cliente')['referencia_domicilio']; // Obtén el correo del cliente
+    
+            // Envía el correo utilizando el Mailable que creaste
+            Mail::to($correo_usuario)->send(new miPrecontrato($nombre_usuario, $correo_usuario,$nombre_paquete,$municipio,$direccion,$telefono,$referencia_domicilio));
+    
+            // Obtener el registro de consultas
+            $queryLog = DB::getQueryLog();
+    
             // Mostrar la primera consulta (si es la única)
             dd($queryLog[0]);
-
+    
             // Limpiar sesión
             session()->forget(['codigo_verificacion', 'datos_cliente']);
-            // Limpiar sesión
-            session()->forget(['codigo_verificacion', 'datos_cliente']);
-        
+    
             return redirect()->route('precontratoExitoso');
         } else {
             return back()->withErrors(['codigo' => 'El código ingresado es incorrecto.']);
         }
     }
-
     public function seleccionarPaquete($id_nombre_paquete)
     {
         // Verificar si el paquete existe en la base de datos

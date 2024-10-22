@@ -7,6 +7,7 @@ use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\PreContratoController;
 use App\Http\Controllers\mostrarClientesController;
 use App\Http\Controllers\editarClienteController;
+use App\Http\Controllers\mailController;
 
 
 Route::get('/agregar-paquete', [PaqueteController::class, 'create']);
@@ -31,6 +32,7 @@ Route::get('/precontrato/verificar-Codigo', [PreContratoController::class, 'most
 Route::post('/precontrato/verificar-Codigo', [PreContratoController::class, 'verificarCodigo'])->name('verificarCodigo'); // Ruta POST para procesar la verificación
 Route::get('/seleccionar-paquete/{id_nombre_paquete}', [PreContratoController::class, 'seleccionarPaquete'])->name('seleccionarPaquete');
 
+Route::post('/enviar-correo', [mailController::class, 'enviarCorreo'])->name('enviar.correo');
 
 Route::get('/login', function () {return view('login');});
 Route::get('/datos', function () {return view('datos');});
