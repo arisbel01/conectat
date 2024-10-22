@@ -359,6 +359,10 @@
                 <label for="referencia_domicilio" class="form-label">Referencia de Domicilio</label>
                 <input type="text" class="form-control" name="referencia_domicilio" value="{{ $cliente->referencia_domicilio }}" required>
             </div>
+            <div class="mb-3">
+                <label for="ID Paquete" class="form-label">ID del Paquete</label>
+                <input type="text" class="form-control" name="paquete" value="{{ $cliente->fk_paquete }}" required>
+            </div>
             <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
                 @csrf
                 @method('PUT')

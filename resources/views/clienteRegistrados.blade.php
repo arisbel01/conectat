@@ -340,7 +340,7 @@
                 <td>{{ $cliente->municipio }}</td>
                 <td>{{ $cliente->direccion ?? 'N/A' }}</td>
                 <td>{{ $cliente->referencia_domicilio }}</td>
-                <td>{{ $cliente->fk_paquete->nombre ?? 'Sin paquete asignado' }}</td> <!-- Mostrar el nombre del paquete -->
+                <td>{{ $cliente->fk_paquete ?? 'Sin paquete asignado' }}</td> 
                 <td>
                 <a href="{{ route('cliente.edit', $cliente->id_cliente) }}" class="btn btn-warning btn-sm">Actualizar</a>
 
