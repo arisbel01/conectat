@@ -310,7 +310,7 @@
                 <!-- End of Topbar -->
         <div class="container mt-5">
             <h2 class="text-center">Lista de Clientes</h2>
-
+                <!-- Apartado que se necesita hacerse responsivo -->
             <table class="table table-striped">
                 <thead>
                     <tr>

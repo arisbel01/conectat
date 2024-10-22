@@ -12,8 +12,9 @@
        
 
     </head>
+
     <body id="page-top">
-        
+    <!--Todo esto corresponde al css-codigoverificacion.css-->
         <header class="navbar">
             <div class="logo">
                 <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
@@ -64,6 +65,7 @@
                 </div>
             </div>
         </footer>
+        <!--Aqui llega los componentes que se usa en el css-codigoverificacion.css-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

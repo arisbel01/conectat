@@ -19,7 +19,7 @@
     
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
-
+<!-- Falta agregarle el nav cuando se responsivo, el contenido lo realiza-->
 <body>
 <div id="wrapper">
         <!-- Sidebar -->

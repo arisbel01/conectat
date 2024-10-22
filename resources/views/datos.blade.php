@@ -7,7 +7,8 @@
         <meta name="author" content="" />
 
         <title>Pre-Contrato</title>
-        <link href="{{ asset('css/datos.css') }}" rel="stylesheet">
+   <!-- Font Awesome icons (free version)
+        <link href="{{ asset('css/datos.css') }}" rel="stylesheet">-->
 
         <title>Agency - Start Bootstrap Theme</title>
         <link href="{{ asset('css/pre-contrato.css') }}" rel="stylesheet">
@@ -19,6 +20,7 @@
     <body id="page-top">
         
     <header class="navbar">
+            <!--Este navbar corresponde al css pre-contrato-->
             <div class="logo">
 
             <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
@@ -31,8 +33,9 @@
             </nav>
         </div>
     </header>
-
        
+
+        <!--Contenedor de registro de datos que esta vinculado con el css-precontrato-->
     <section class="container-mt-5">
         <h2 class="text-center">Datos de Pre-contrato</h2>
         <form action="{{ route('enviarCodigo') }}" method="POST">
@@ -107,6 +110,8 @@
     </section>
     
     <footer>
+
+        <!--Pie de pagina donde se encuentra el footer css-precontrato-->
         <div class="footer-container">
             <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
             <ul class="footer-links">
@@ -131,6 +136,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 
+            <!--Js para verificar los datos si estan llenos y mostrar el mensaje-->
         <script>function verificarDatos(event) {
             event.preventDefault(); // Prevenir la acción por defecto del enlace
         
@@ -184,6 +190,8 @@
             }
         }
         </script>
+
+        <!--Mensaje de advertencia-->
         <div id="miModal" class="modal">
             <div class="modal-content">
                 <img id="icono" src="{{ asset('images/falla.png') }}" alt="Icono">
