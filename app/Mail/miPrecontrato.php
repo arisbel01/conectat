@@ -42,10 +42,11 @@ class miPrecontrato extends Mailable
      *
      * @return $this
      */
+    
     public function build()
     {
-        return $this->from('no-reply@itssy.edu.mx')
-                    ->subject('Confirmación de Precontrato')
+        return $this->subject('Confirmación de Precontrato')
                     ->view('mails.envioDatos');
+                    /*->from('no-reply@itssy.edu.mx') */
     }
 }
