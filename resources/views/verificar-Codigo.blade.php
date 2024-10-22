@@ -6,18 +6,20 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
 
+
         <title>Conectat-Verificacion  </title>
         <link href="{{ asset('css/userStyles.css') }}" rel="stylesheet">
 
-        <title>Agency - Start Bootstrap Theme</title>
-     
+       
 
         <!-- Font Awesome icons (free version)-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        
+       
+
     </head>
     <body id="page-top">
         
+
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
 
@@ -38,6 +40,7 @@
 
        
         <section class="container-code">
+
                 <h2 class="text-center">Verificación de Código</h2>
                 <form action="{{ route('verificarCodigo') }}" method="POST">
                 @csrf <!-- Protección CSRF en Laravel -->
@@ -74,14 +77,11 @@
                 </div>
             </div>
         </footer>
-
- 
-  
-
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+       
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    </body>
     </body>
