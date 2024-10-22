@@ -20,8 +20,15 @@
     <body id="page-top">
         
     <header class="navbar">
+<<<<<<< HEAD
             <!--Este navbar corresponde al css pre-contrato-->
+=======
+<<<<<<< HEAD
+        <div class="logo">
+=======
+>>>>>>> main
             <div class="logo">
+>>>>>>> origin/wini
 
             <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
         </div>
