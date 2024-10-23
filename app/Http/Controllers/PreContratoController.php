@@ -17,7 +17,7 @@ class PreContratoController extends Controller
         return view('datos');
     }
 
-    public function enviarCodigo(Request $request)
+    public function enviarCodigo(Request $request) 
     {
         // Validar los datos del formulario
         $validatedData = $request->validate([
@@ -25,19 +25,19 @@ class PreContratoController extends Controller
             'cp' => 'required|string',
             'municipio' => 'required|string|max:255',
             'direccion' => 'nullable|string|max:255',
-            'correo' => 'required|email',
+            'correo_electronico' => 'required|email',  // Cambiado a 'correo_electronico'
             'telefono' => 'required|string|max:20',
             'referencia_domicilio' => 'required|string|max:255',
         ]);
 
-         // Verificar si el correo ya está registrado
-        $clienteExistente = Cliente::where('correo', $request->correo)->first();
+        // Verificar si el correo ya está registrado
+        $clienteExistente = Cliente::where('correo_electronico', $request->correo_electronico)->first();  // Cambiado a 'correo_electronico'
         if ($clienteExistente) {
             // Si el correo ya está registrado, devolver un error
-            return back()->withErrors(['correo' => 'Este correo ya está registrado.'])->withInput();
+            return back()->withErrors(['correo_electronico' => 'Este correo ya está registrado.'])->withInput();  // Cambiado a 'correo_electronico'
         }
-    
-        // Aqui se verifica si el id del paquete se cargó correctamente
+
+        // Aquí se verifica si el id del paquete se cargó correctamente
         if (session()->has('id_nombre_paquete')) {
             // Añadir el id_nombre_paquete a los datos validados
             $validatedData['fk_paquete'] = session('id_nombre_paquete');
@@ -47,7 +47,7 @@ class PreContratoController extends Controller
         $codigoVerificacion = Str::random(6);
 
         // Enviar correo con el código
-        Mail::to($request->correo)->send(new VerificacionCodigo($codigoVerificacion));
+        Mail::to($request->correo_electronico)->send(new VerificacionCodigo($codigoVerificacion));  // Cambiado a 'correo_electronico'
 
         // Guardar los datos temporalmente en la sesión
         session(['codigo_verificacion' => $codigoVerificacion, 'datos_cliente' => $validatedData]);
@@ -56,49 +56,13 @@ class PreContratoController extends Controller
     }
 
 
+
     public function mostrarVerificacion()
     {
         return view('verificar-Codigo');
     }
 
-   // public function mostrarVerificacion()
-    //{
-        // Recuperar el código de verificación de la sesión
-      //  $codigoVerificacion = session('codigo_verificacion');
-
-     // Pasar el código a la vista
-     //return view('verificar-Codigo', ['codigo' => $codigoVerificacion]);
-    //}
-
-
-    // public function verificarCodigo(Request $request)
-    // {
-    //     $request->validate([
-    //         'codigo' => 'required',
-    //     ]);
-
-    //     if ($request->codigo === session('codigo_verificacion')) {
-    //         DB::enableQueryLog();
-
-    //         // Crear un nuevo cliente en la base de datos
-    //         Cliente::create(session('datos_cliente'));
-        
-    //          // Obtener el registro de consultas
-    //         $queryLog = DB::getQueryLog();
-
-    //         // Mostrar la primera consulta (si es la única)
-    //         dd($queryLog[0]);
-
-    //         // Limpiar sesión
-    //         session()->forget(['codigo_verificacion', 'datos_cliente']);
-    //         // Limpiar sesión
-    //         session()->forget(['codigo_verificacion', 'datos_cliente']);
-        
-    //         return redirect()->route('precontratoExitoso');
-    //     } else {
-    //         return back()->withErrors(['codigo' => 'El código ingresado es incorrecto.']);
-    //     }
-    // }
+   
     public function verificarCodigo(Request $request)
     {
         $request->validate([
@@ -117,7 +81,7 @@ class PreContratoController extends Controller
 
             // Enviar correo después de crear el cliente
             $nombre_usuario = session('datos_cliente')['nombre_completo']; // Obtén el nombre del cliente
-            $correo_usuario = session('datos_cliente')['correo']; // Obtén el correo del cliente
+            $correo_usuario = session('datos_cliente')['correo_electronico']; // Obtén el correo del cliente
             $municipio = session('datos_cliente')['municipio']; // Obtén el nombre del cliente
             $direccion = session('datos_cliente')['direccion']; // Obtén el correo del cliente
             $telefono = session('datos_cliente')['telefono']; // Obtén el nombre del cliente
@@ -126,11 +90,7 @@ class PreContratoController extends Controller
             // Envía el correo utilizando el Mailable que creaste
             Mail::to($correo_usuario)->send(new miPrecontrato($nombre_usuario, $correo_usuario,$nombre_paquete,$municipio,$direccion,$telefono,$referencia_domicilio));
     
-            // Obtener el registro de consultas
-            $queryLog = DB::getQueryLog();
-    
-            // Mostrar la primera consulta (si es la única)
-            dd($queryLog[0]);
+            
     
             // Limpiar sesión
             session()->forget(['codigo_verificacion', 'datos_cliente']);
