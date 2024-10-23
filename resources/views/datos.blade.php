@@ -19,7 +19,7 @@
     <body id="page-top">
         
     <header class="navbar">
-        <div class="logo">
+            <div class="logo">
 
             <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
         </div>
@@ -41,6 +41,23 @@
             </ul>
         </nav> --}}
     </header>
+
+
+                <img src="{{asset('images/logo1.png')}}" alt="Logo" class="logo-img">
+            </div>
+           
+            <nav>
+                <ul class="nav-links">
+                <li><a href="user">Inicio</a></li>
+                    <li><a href="user">Planes de Internet</a></li>
+
+
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#soporte">Soporte</a></li>
+                </ul>
+            </nav>
+        </header>
+
 
        
     <section class="container-mt-5">
