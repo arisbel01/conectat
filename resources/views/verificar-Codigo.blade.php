@@ -19,23 +19,7 @@
     </head>
 
     <body id="page-top">
-<<<<<<< HEAD
-    <!--Todo esto corresponde al css-codigoverificacion.css-->
-        <header class="navbar">
-            <div class="logo">
-                <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
-            </div>
-           
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#planes">Planes de Internet</a></li>
-                </ul>
-            </nav>
-        </header>
-=======
         
->>>>>>> origin/HEAD
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">

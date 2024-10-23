@@ -18,32 +18,9 @@
     </head>
     <body id="page-top">
         
-<<<<<<< HEAD
-    <header class="navbar">
-<<<<<<< HEAD
-            <!--Este navbar corresponde al css pre-contrato-->
-=======
-<<<<<<< HEAD
-        <div class="logo">
-=======
->>>>>>> main
-            <div class="logo">
->>>>>>> origin/wini
-
-            <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="logo-img">
-        </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="{{ url('/user') }}" onclick="verificarDatos(event)">Inicio</a></li>
-                    <li><a href="{{ url('/user') }}" onclick="verificarDatos(event)">Planes de Internet</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-=======
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -61,7 +38,6 @@
 
 
 
->>>>>>> origin/HEAD
        
 
         <!--Contenedor de registro de datos que esta vinculado con el css-precontrato-->
