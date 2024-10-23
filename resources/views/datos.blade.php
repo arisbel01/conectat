@@ -20,7 +20,7 @@
         
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -39,6 +39,8 @@
 
 
        
+
+        <!--Contenedor de registro de datos que esta vinculado con el css-precontrato-->
     <section class="container-mt-5">
         <h2 class="text-center">Datos de Pre-contrato</h2>
         <form action="{{ route('enviarCodigo') }}" method="POST">
@@ -113,6 +115,8 @@
     </section>
     
     <footer>
+
+        <!--Pie de pagina donde se encuentra el footer css-precontrato-->
         <div class="footer-container">
             <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
             <ul class="footer-links">
@@ -137,6 +141,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 
+            <!--Js para verificar los datos si estan llenos y mostrar el mensaje-->
         <script>function verificarDatos(event) {
             event.preventDefault(); // Prevenir la acción por defecto del enlace
         
@@ -190,6 +195,8 @@
             }
         }
         </script>
+
+        <!--Mensaje de advertencia-->
         <div id="miModal" class="modal">
             <div class="modal-content">
                 <img id="icono" src="{{ asset('images/falla.png') }}" alt="Icono">

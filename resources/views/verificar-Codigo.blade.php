@@ -17,6 +17,7 @@
        
 
     </head>
+
     <body id="page-top">
         
 
@@ -77,6 +78,7 @@
                 </div>
             </div>
         </footer>
+        <!--Aqui llega los componentes que se usa en el css-codigoverificacion.css-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
