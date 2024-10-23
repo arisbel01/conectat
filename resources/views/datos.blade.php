@@ -72,7 +72,7 @@
             <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="ciudad" class="form-label">Correo</label>
-                <input type="email" class="form-control @error('correo') is-invalid @enderror" id="correo" name="correo" placeholder="Correo" value="{{ old('correo') }}" required>
+                <input type="email" class="form-control @error('correo_electronico') is-invalid @enderror" id="correo_electronico" name="correo_electronico" placeholder="Correo" value="{{ old('correo') }}" required>
                 <!-- Mostrar mensaje de error si el correo ya está registrado -->
                 @error('correo')
                     <div class="invalid-feedback">
