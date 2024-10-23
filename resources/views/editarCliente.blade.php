@@ -384,6 +384,9 @@
 
             <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
             <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
+            <p></p>
+            <a href="{{ route('cliente.contrato', $cliente->id_cliente) }}" class="btn btn-secondary" target="_blank">Generar PDF de Contrato</a>
+
         </form>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
