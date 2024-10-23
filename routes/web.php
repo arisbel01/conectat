@@ -71,3 +71,6 @@ Route::get('/precontrato/verificar-Codigo', [PreContratoController::class, 'most
 Route::post('/precontrato/verificar-Codigo', [PreContratoController::class, 'verificarCodigo'])->name('verificarCodigo');
 Route::get('/seleccionar-paquete/{id_nombre_paquete}', [PreContratoController::class, 'seleccionarPaquete'])->name('seleccionarPaquete');
 Route::post('/enviar-correo', [MailController::class, 'enviarCorreo'])->name('enviar.correo');
+
+Route::get('cliente/{id}/contrato', [editarClienteController::class, 'generarContratoPDF'])->name('cliente.contrato');
+
