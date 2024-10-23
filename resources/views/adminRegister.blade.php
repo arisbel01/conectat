@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -12,7 +13,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
-    <title>Editar de Clientes</title>
+    <title>Registrar Administradores</title>
 
     <!-- Custom fonts for this template-->
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -23,19 +24,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <script>
-        $(document).ready(function() {
-            // Bloquear todos los campos al cargar la página
-            $('input').prop('disabled', true);
 
-            // Habilitar los campos al hacer clic en el botón
-            $('#editButton').click(function() {
-                $('input').prop('disabled', false); // Habilita los campos
-                $(this).hide(); // Oculta el botón después de habilitar los campos
-            });
-        });
-    </script>
-
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -70,17 +60,18 @@
 
     <!-- Nav Item - Clientes -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/clienteRegistrados') }}">
+        <a class="nav-link" href="{{url('clienteRegistrados')}}">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Clientes</span></a>
     </li>
 
-         <!-- Nav Item - Clientes -->
-         <li class="nav-item">
+      <!-- Nav Item - Clientes -->
+      <li class="nav-item">
         <a class="nav-link" href="{{ url('/indexAdmin') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Adminisreadores</span></a>
     </li>
+
     <!-- Nav Item - Facturación -->
     <li class="nav-item">
         <a class="nav-link" href="facturacion.html">
@@ -127,7 +118,7 @@
 
         </ul>
         <!-- End of Sidebar -->
-
+        <div class="container-fluid">
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -325,69 +316,46 @@
 
                 </nav>
                 <!-- End of Topbar -->
-    <div class="container mt-5">
-        <h2>Editar Cliente</h2>
-        <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
+                <div class="container">
+        <h2>Registrar Nuevo Administrador</h2>
+        
+        <!-- Muestra los errores de validación -->
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('admin.register') }}" method="POST">
             @csrf
-            @method('PUT')
-
-            <div class="mb-3">
-                <label for="nombre_completo" class="form-label">Nombre Completo</label>
-                <input type="text" class="form-control" name="nombre_completo" value="{{ $cliente->nombre_completo }}" required>
+            <div class="form-group">
+                <label for="Nombre">Nombre</label>
+                <input type="text" name="Nombre" class="form-control" value="{{ old('Nombre') }}" required>
             </div>
-
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo</label>
-                <input type="email" class="form-control" name="correo" value="{{ $cliente->correo_electronico }}" required>
+            <div class="form-group">
+                <label for="Correo_electronico">Correo Electrónico</label>
+                <input type="email" name="Correo_electronico" class="form-control" value="{{ old('Correo_electronico') }}" required>
             </div>
-
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" name="telefono" value="{{ $cliente->telefono }}" required>
+            <div class="form-group">
+                <label for="Contraseña">Contraseña</label>
+                <input type="password" name="Contraseña" class="form-control" required>
             </div>
-
-            <div class="mb-3">
-                <label for="cp" class="form-label">Código Postal</label>
-                <input type="text" class="form-control" name="cp" value="{{ $cliente->cp }}" required>
+            <div class="form-group">
+                <label for="permisos">Permisos</label>
+                <select name="permisos" class="form-control">
+                    <option value="admin">Administrador</option>
+                    <option value="superadmin">Super Administrador</option>
+                </select>
             </div>
-
-            <div class="mb-3">
-                <label for="municipio" class="form-label">Municipio</label>
-                <input type="text" class="form-control" name="municipio" value="{{ $cliente->municipio }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" name="direccion" value="{{ $cliente->direccion }}">
-            </div>
-
-            <div class="mb-3">
-                <label for="referencia_domicilio" class="form-label">Referencia de Domicilio</label>
-                <input type="text" class="form-control" name="referencia_domicilio" value="{{ $cliente->referencia_domicilio }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="ID_Paquete" class="form-label">ID del Paquete</label>
-                <input type="text" class="form-control" name="ID_Paquete" value="{{ $cliente->fk_paquete }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="Datos_Paquete" class="form-label">Datos del paquete</label>
-           <input type="text" class="form-control" name="Datos_Paquete" value="Paquete: {{ $cliente->nombre_paquete->nombre_paquete }} de $:{{ $cliente->nombre_paquete->precio }} incluye:{{ $cliente->nombre_paquete->caracteristicas_paquete }} velocidad:{{ $cliente->nombre_paquete->velocidad_paquete }}" required> 
-
-            </div>
-            <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                <br>
-                
-            </form>
-
-            <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
-            <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
-            <p></p>
-            <a href="{{ route('cliente.contrato', $cliente->id_cliente) }}" class="btn btn-secondary" target="_blank">Generar PDF de Contrato</a>
-
+            <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+    </div>
+            </div>
+         </div>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -397,32 +365,6 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-        </div>
-    </div>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-        
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -442,5 +384,6 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+
 </body>
 </html>

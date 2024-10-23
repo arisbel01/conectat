@@ -1,46 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <title>Agregar Paquete de Internet</title>
+    <link href="{{ asset('css/agregar-paq.css') }}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
-    <title>Editar de Clientes</title>
-
-    <!-- Custom fonts for this template-->
-        <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
+    
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <script>
-        $(document).ready(function() {
-            // Bloquear todos los campos al cargar la página
-            $('input').prop('disabled', true);
-
-            // Habilitar los campos al hacer clic en el botón
-            $('#editButton').click(function() {
-                $('input').prop('disabled', false); // Habilita los campos
-                $(this).hide(); // Oculta el botón después de habilitar los campos
-            });
-        });
-    </script>
-
 </head>
+<!-- Falta agregarle el nav cuando se responsivo, el contenido lo realiza-->
 <body>
 <div id="wrapper">
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -325,69 +308,55 @@
 
                 </nav>
                 <!-- End of Topbar -->
-    <div class="container mt-5">
-        <h2>Editar Cliente</h2>
-        <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
-            @csrf
-            @method('PUT')
 
-            <div class="mb-3">
-                <label for="nombre_completo" class="form-label">Nombre Completo</label>
-                <input type="text" class="form-control" name="nombre_completo" value="{{ $cliente->nombre_completo }}" required>
-            </div>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="container">
+                        <h1 class="text-center my-4">Actualizar Administrador</h1>
+                        <div class="row">
+                            <!-- Columna del formulario -->
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <form action="{{ route('admin.ActualizarAdmin', $admin->id_admin) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group">
+                                            <label for="Nombre">Nombre</label>
+                                            <input type="text" name="Nombre" id="Nombre" class="form-control" value="{{ $admin->Nombre }}" required>
+                                        </div>
 
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo</label>
-                <input type="email" class="form-control" name="correo" value="{{ $cliente->correo_electronico }}" required>
-            </div>
+                                        <div class="form-group">
+                                            <label for="Correo_electronico">Correo Electrónico</label>
+                                            <input type="email" name="Correo_electronico" id="Correo_electronico" class="form-control" value="{{ $admin->Correo_electronico }}" required>
+                                        </div>
 
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" name="telefono" value="{{ $cliente->telefono }}" required>
-            </div>
+                                        <div class="form-group">
+                                            <label for="permisos">Permisos</label>
+                                            <input type="text" name="permisos" id="permisos" class="form-control" value="{{ $admin->permisos }}" required>
+                                        </div>
 
-            <div class="mb-3">
-                <label for="cp" class="form-label">Código Postal</label>
-                <input type="text" class="form-control" name="cp" value="{{ $cliente->cp }}" required>
-            </div>
+                                        <div class="form-group">
+                                            <label for="Contraseña">Contraseña (Opcional)</label>
+                                            <input type="password" name="Contraseña" id="Contraseña" class="form-control" placeholder="Dejar en blanco si no deseas cambiar la contraseña">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Actualizar Admin</button>
+                                            <a href="{{ route('admin.list') }}" class="btn btn-secondary">Cancelar</a>
+                                        </div>
+                                    </form> 
 
-            <div class="mb-3">
-                <label for="municipio" class="form-label">Municipio</label>
-                <input type="text" class="form-control" name="municipio" value="{{ $cliente->municipio }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" name="direccion" value="{{ $cliente->direccion }}">
-            </div>
-
-            <div class="mb-3">
-                <label for="referencia_domicilio" class="form-label">Referencia de Domicilio</label>
-                <input type="text" class="form-control" name="referencia_domicilio" value="{{ $cliente->referencia_domicilio }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="ID_Paquete" class="form-label">ID del Paquete</label>
-                <input type="text" class="form-control" name="ID_Paquete" value="{{ $cliente->fk_paquete }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="Datos_Paquete" class="form-label">Datos del paquete</label>
-           <input type="text" class="form-control" name="Datos_Paquete" value="Paquete: {{ $cliente->nombre_paquete->nombre_paquete }} de $:{{ $cliente->nombre_paquete->precio }} incluye:{{ $cliente->nombre_paquete->caracteristicas_paquete }} velocidad:{{ $cliente->nombre_paquete->velocidad_paquete }}" required> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+                <!-- /.container-fluid -->
 
             </div>
-            <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                <br>
-                
-            </form>
+            <!-- End of Main Content -->
 
-            <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
-            <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
-            <p></p>
-            <a href="{{ route('cliente.contrato', $cliente->id_cliente) }}" class="btn btn-secondary" target="_blank">Generar PDF de Contrato</a>
-
-        </form>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -397,8 +366,13 @@
                 </div>
             </footer>
             <!-- End of Footer -->
+
         </div>
+        <!-- End of Content Wrapper -->
+
     </div>
+    <!-- End of Page Wrapper -->
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -424,8 +398,7 @@
         </div>
         
     </div>
-
-    <!-- Bootstrap core JavaScript-->
+<!-- Bootstrap core JavaScript-->
     <!-- Vendor Scripts -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -442,5 +415,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+
 </body>
+
 </html>

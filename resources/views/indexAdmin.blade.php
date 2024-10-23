@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -12,7 +13,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="{{ asset('css/packs.css') }}" rel="stylesheet">
-    <title>Editar de Clientes</title>
+    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
         <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -23,24 +24,15 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <script>
-        $(document).ready(function() {
-            // Bloquear todos los campos al cargar la página
-            $('input').prop('disabled', true);
-
-            // Habilitar los campos al hacer clic en el botón
-            $('#editButton').click(function() {
-                $('input').prop('disabled', false); // Habilita los campos
-                $(this).hide(); // Oculta el botón después de habilitar los campos
-            });
-        });
-    </script>
 
 </head>
-<body>
-<div id="wrapper">
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -70,17 +62,18 @@
 
     <!-- Nav Item - Clientes -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/clienteRegistrados') }}">
+        <a class="nav-link" href="clienteRegistrados">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Clientes</span></a>
     </li>
 
-         <!-- Nav Item - Clientes -->
-         <li class="nav-item">
+    <!-- Nav Item - Clientes -->
+    <li class="nav-item">
         <a class="nav-link" href="{{ url('/indexAdmin') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Gestión de Adminisreadores</span></a>
     </li>
+
     <!-- Nav Item - Facturación -->
     <li class="nav-item">
         <a class="nav-link" href="facturacion.html">
@@ -325,69 +318,68 @@
 
                 </nav>
                 <!-- End of Topbar -->
-    <div class="container mt-5">
-        <h2>Editar Cliente</h2>
-        <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
-            @csrf
-            @method('PUT')
 
-            <div class="mb-3">
-                <label for="nombre_completo" class="form-label">Nombre Completo</label>
-                <input type="text" class="form-control" name="nombre_completo" value="{{ $cliente->nombre_completo }}" required>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div>
+                    <h1 class="h3 mb-2 text-gray-800">Administradores Existentes</h1>
+                    <a href="{{ url('/adminRegister') }}" class="btn btn-info btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    <span class="text">Nuevo</span>
+                    </a></div>
+                    
+                    <section class="page-section" id="portfolio">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Aquí recorremos los paquetes y generamos el HTML dinámicamente -->
+                                @foreach($administradores as $admin)
+                                    <div class="col-md-4">
+                                        <div class="card mb-4 py-3 border-left-danger">
+                                            <div class="card-body">
+                                                <h5 class="card-text">id:{{  $admin->id_admin }}</h5>
+                                                <p class="card-text">Nombre:{{ $admin->Nombre  }}</p>
+                                                <p class="card-text">Correo: {{ $admin->Correo_electronico  }}</p>
+                                                <p class="card-text">Contraseña: {{  $admin->Contraseña }}</p>
+                                                <p class="card-text">Rol: ${{  $admin->permisos }}</p>
+                                                    
+                                                <a href="{{ route('admin.edit', $admin->id_admin) }}" class="btn btn-info btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text">Editar</span>
+                                                </a>
+                                                <p></p>
+                                                <form action="{{ route('admin.destroy', $admin->id_admin) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este paquete?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    
+                                                    <button type="submit" class="btn btn-danger btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                        <span class="text">Eliminar</span>
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>                                                 
+                    </section>
+
+                </div>
+                <!-- /.container-fluid -->
+
             </div>
+            <!-- End of Main Content -->
 
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo</label>
-                <input type="email" class="form-control" name="correo" value="{{ $cliente->correo_electronico }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" name="telefono" value="{{ $cliente->telefono }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="cp" class="form-label">Código Postal</label>
-                <input type="text" class="form-control" name="cp" value="{{ $cliente->cp }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="municipio" class="form-label">Municipio</label>
-                <input type="text" class="form-control" name="municipio" value="{{ $cliente->municipio }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" class="form-control" name="direccion" value="{{ $cliente->direccion }}">
-            </div>
-
-            <div class="mb-3">
-                <label for="referencia_domicilio" class="form-label">Referencia de Domicilio</label>
-                <input type="text" class="form-control" name="referencia_domicilio" value="{{ $cliente->referencia_domicilio }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="ID_Paquete" class="form-label">ID del Paquete</label>
-                <input type="text" class="form-control" name="ID_Paquete" value="{{ $cliente->fk_paquete }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="Datos_Paquete" class="form-label">Datos del paquete</label>
-           <input type="text" class="form-control" name="Datos_Paquete" value="Paquete: {{ $cliente->nombre_paquete->nombre_paquete }} de $:{{ $cliente->nombre_paquete->precio }} incluye:{{ $cliente->nombre_paquete->caracteristicas_paquete }} velocidad:{{ $cliente->nombre_paquete->velocidad_paquete }}" required> 
-
-            </div>
-            <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                <br>
-                
-            </form>
-
-            <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
-            <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
-            <p></p>
-            <a href="{{ route('cliente.contrato', $cliente->id_cliente) }}" class="btn btn-secondary" target="_blank">Generar PDF de Contrato</a>
-
-        </form>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -397,8 +389,13 @@
                 </div>
             </footer>
             <!-- End of Footer -->
+
         </div>
+        <!-- End of Content Wrapper -->
+
     </div>
+    <!-- End of Page Wrapper -->
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -422,7 +419,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -442,5 +438,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+    
 </body>
+
 </html>

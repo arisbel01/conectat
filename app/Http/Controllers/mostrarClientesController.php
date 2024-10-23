@@ -15,7 +15,9 @@ class mostrarClientesController extends Controller
     public function mostrarClientes()
     {
         // Obtener todos los clientes de la base de datos
-        $clientes = Cliente::all();
+        $clientes = Cliente::with('nombre_paquete')->get();
+        
+       
        // dd($clientes); // Verifica que los IDs están presentes
         // Pasar los clientes a la vista
         return view('clienteRegistrados', compact('clientes'));
@@ -38,10 +40,13 @@ class mostrarClientesController extends Controller
             'cp' => 'required|string',
             'municipio' => 'required|string|max:255',
             'direccion' => 'nullable|string|max:255',
-            'correo' => 'required|email',
+            'correo_electronico' => 'required|email',
             'telefono' => 'required|string|max:20',
             'referencia_domicilio' => 'required|string|max:255',
+            'fk_paquete' => 'required|exists:nombres_paquetes,id_nombre_paquete', // Validar la clave foránea
+            
         ]);
+        
 
      // Actualizar el cliente
 
@@ -56,5 +61,6 @@ class mostrarClientesController extends Controller
         $cliente->delete(); // Eliminar el cliente
         return redirect()->route('clientes')->with('success', 'Cliente eliminado correctamente.');
     }
+    
 
 }
