@@ -347,7 +347,7 @@
                                     <tr>
                                         <!--<th>{{ $cliente->id_cliente }}</th>-->
                                         <td>{{ $cliente->nombre_completo }}</td>
-                                        <td>{{ $cliente->correo }}</td>
+                                        <td>{{ $cliente->correo_electronico }}</td>
                                         <td>{{ $cliente->telefono }}</td>
                                         <td>{{ $cliente->cp }}</td>
                                         <td>{{ $cliente->municipio }}</td>
@@ -402,7 +402,7 @@
             @foreach($clientes as $cliente)
             <tr>
                 <td>{{ $cliente->nombre_completo }}</td>
-                <td>{{ $cliente->correo }}</td>
+                <td>{{ $cliente->correo_electronico }}</td>
                 <td>{{ $cliente->telefono }}</td>
                 <td>{{ $cliente->cp }}</td>
                 <td>{{ $cliente->municipio }}</td>

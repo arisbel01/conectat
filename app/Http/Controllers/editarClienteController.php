@@ -25,7 +25,7 @@ class editarClienteController extends Controller
         // Validar los datos recibidos
         $validatedData = $request->validate([
             'nombre_completo' => 'required|string|max:255',
-            'correo' => 'required|email',
+            'correo_electronico' => 'required|email',
             'telefono' => 'required|string|max:20',
             'cp' => 'required|string',
             'municipio' => 'required|string|max:255',

@@ -338,7 +338,7 @@
 
             <div class="mb-3">
                 <label for="correo" class="form-label">Correo</label>
-                <input type="email" class="form-control" name="correo" value="{{ $cliente->correo }}" required>
+                <input type="email" class="form-control" name="correo" value="{{ $cliente->correo_electronico }}" required>
             </div>
 
             <div class="mb-3">
