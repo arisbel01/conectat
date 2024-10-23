@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
    
 });
 
+
 Route::get('/', [PaquetesController::class, 'index'])->name('paquete.index');
 
 Route::get('/agregar-paquete', [PaqueteController::class, 'create']);
