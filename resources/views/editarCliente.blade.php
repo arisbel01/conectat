@@ -360,20 +360,23 @@
                 <input type="text" class="form-control" name="referencia_domicilio" value="{{ $cliente->referencia_domicilio }}" required>
             </div>
             <div class="mb-3">
-                <label for="ID Paquete" class="form-label">ID del Paquete</label>
-                <input type="text" class="form-control" name="paquete" value="{{ $cliente->fk_paquete }}" required>
+                <label for="ID_Paquete" class="form-label">ID del Paquete</label>
+                <input type="text" class="form-control" name="ID_Paquete" value="{{ $cliente->fk_paquete }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="Datos_Paquete" class="form-label">Datos del paquete</label>
+           <input type="text" class="form-control" name="Datos_Paquete" value="Paquete: {{ $cliente->nombre_paquete->nombre_paquete }} de $:{{ $cliente->nombre_paquete->precio }} incluye:{{ $cliente->nombre_paquete->caracteristicas_paquete }} velocidad:{{ $cliente->nombre_paquete->velocidad_paquete }}" required> 
+
             </div>
             <form action="{{ route('cliente.update', $cliente->id_cliente) }}" method="POST">
                 @csrf
                 @method('PUT')
-                
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 <br>
+                
             </form>
-            
-            <br>
-            <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
-                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
 
+            <button type="button" id="editButton" class="btn btn-primary">Modificar Campos</button>
             <a href="{{ route('clientes') }}" class="btn btn-secondary">Cancelar</a>
         </form>
             <!-- Footer -->
