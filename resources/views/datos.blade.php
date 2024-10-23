@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{{ url('/user') }}"onclick="verificarDatos(event)" >Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/user') }}">Planes de Internet</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/user') }}" onclick="verificarDatos(event)">Planes de Internet</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Acerda de</a></li>                       
                         <li class="nav-item"><a class="nav-link" href="#contact">Contactanos</a></li>
                     </ul>
@@ -149,7 +149,7 @@
             var nombre = document.getElementById('nombre_completo').value;
             var cp = document.getElementById('cp').value;
             var municipio = document.getElementById('municipio').value;
-            var correo = document.getElementById('correo').value;
+            var correo = document.getElementById('correo_electronico').value;
             var telefono = document.getElementById('telefono').value;
             var ciudad = document.getElementById('ciudad').value;
             var referencia = document.getElementById('referencia_domicilio').value;
