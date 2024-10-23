@@ -95,7 +95,7 @@ class PreContratoController extends Controller
             // Limpiar sesión
             session()->forget(['codigo_verificacion', 'datos_cliente']);
     
-            return redirect()->route('precontratoExitoso');
+            return redirect()->route('/user');
         } else {
             return back()->withErrors(['codigo' => 'El código ingresado es incorrecto.']);
         }
