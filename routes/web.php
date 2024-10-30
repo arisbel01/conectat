@@ -10,6 +10,8 @@ use App\Http\Controllers\EditarClienteController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUpdateController;
+use App\Http\Controllers\AcercaNosotrosController;
+use App\Http\Controllers\ContactoController;
 
 // Ruta para el formu8lario de login
 Route::get('/login',[AdminController::class,'login'])->name('login');
@@ -74,4 +76,7 @@ Route::post('/enviar-correo', [MailController::class, 'enviarCorreo'])->name('en
 
 Route::get('cliente/{id}/contrato', [editarClienteController::class, 'generarContratoPDF'])->name('cliente.contrato');
 Route::get('/paquetePromocion', [UserController::class, 'promociones'])->name('mostrar.paquetes');
+Route::get('/acercaNosotros', [AcercaNosotrosController::class, 'acerca'])->name('acerca');
+Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto');
+Route::post('/enviar-mensaje', [ContactoController::class, 'enviarMensaje'])->name('enviar-mensaje');
 
